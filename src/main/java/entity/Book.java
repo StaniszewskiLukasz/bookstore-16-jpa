@@ -37,6 +37,9 @@ public class Book {
     @JoinTable(name = "books_authors",
                 joinColumns = @JoinColumn(name = "book_id"),
                 inverseJoinColumns = @JoinColumn(name = "author_id"))
-    List<Authors> authors;
+    private List<Authors> authors;
+
+    @OneToMany(mappedBy = "book")
+    private List<Copy> copies;
 
 }
