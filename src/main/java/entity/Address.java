@@ -30,4 +30,5 @@ public class Address {
 
     @OneToMany(mappedBy = "address")
     private List<Publisher> publishers;
+
 }
