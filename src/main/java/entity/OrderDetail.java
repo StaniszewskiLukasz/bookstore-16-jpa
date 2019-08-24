@@ -16,11 +16,11 @@ public class OrderDetail {
     @Column(name = "id")
     private long id;
 
-    @ManyToOne
+    @ManyToOne // to jest jawne stworzenie many to many poprzez zrobienie tabeli pośredniczącej i dwóch relacji jeden do wielu
     @JoinColumn(name = "copy_id",unique = true,nullable = false)
     private Copy copy;
 
-    @ManyToOne
+    @ManyToOne // to jest jawne stworzenie many to many poprzez zrobienie tabeli pośredniczącej i dwóch relacji jeden do wielu
     @JoinColumn(name = "order_id",nullable = false)
     private Order order;
 }

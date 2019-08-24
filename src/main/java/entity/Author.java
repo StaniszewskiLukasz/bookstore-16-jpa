@@ -11,7 +11,7 @@ import java.util.List;
 @Table(name = "authors")
 @Getter
 @Setter
-public class Authors extends BasicEntity {
+public class Author extends BasicEntity {
     @Column(name = "first_name")
     private String firstName;
 
@@ -27,4 +27,12 @@ public class Authors extends BasicEntity {
 
     @ManyToMany(mappedBy = "authors")
     private List<Book> books;
+
+    public Author() {
+    }
+
+    public Author(long id) {
+        this.id=id;
+    }
+
 }

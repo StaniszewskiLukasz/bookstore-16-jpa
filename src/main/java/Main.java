@@ -1,6 +1,9 @@
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
+import dao.book.BookDaoImplement;
+import entity.Book;
+import entity.Category;
+import entity.CategoryCode;
+import service.BookService;
+import service.BookServiceImplement;
 
 /**
  * The type Main.
@@ -12,11 +15,25 @@ public class Main {
      * @param args the input arguments
      */
     public static void main(String[] args) {
-        EntityManagerFactory emf = Persistence
-                .createEntityManagerFactory("bookstore16jpa");
-        EntityManager entityManager = emf.createEntityManager();
+        BookService bookService = new BookServiceImplement(new BookDaoImplement());
+        Book byId = bookService.findById(2L);
+        System.out.println(byId);
 
-        entityManager.close();
-        emf.close();
+        Category category = new Category();
+        category.setName("History");
+        category.setCode(CategoryCode.HISTORY);
+
+
+        Book book = new Book();
+        book.setTitle("Ksiązka B");
+        book.setPagesNumber(400);
+        book.setIsbn(10101010101010L);
+
+        bookService.insert(book);
+
+        System.out.println(byId.getAuthors());
+
+
+
     }
 }
